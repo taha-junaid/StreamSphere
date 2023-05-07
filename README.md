@@ -2,8 +2,8 @@
 A video streaming platform that allows multiple users to watch a movie together. (Synchronizing the playback time and live participants in a channel for all users watching a movie together).
 
 ## TechStack:
+Backend: Java, SpringBoot, Apache Kafka, AWS (DynamoDB, EC2)  
 FrontEnd: HTML, CSS, Javascript  
-Backend: Java, SpringBoot, Apache Kafka, AWS (DynamoDB, EC2)
 
 #### Home Page:
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/113802375/236699151-5148df9c-3139-4619-a52f-4c16703a57ab.png">
