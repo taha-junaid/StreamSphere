@@ -1,5 +1,5 @@
 ## Streamsphere
-A video streaming platform that allows multiple users to watch a movie together. (Synchronizing the playback time and live participants in a channel for all users wanting to watch a movie together).
+A video streaming platform that allows multiple users to watch a movie together. (Synchronizing the playback time and live participants in a channel for all users watching a movie together).
 
 ## TechStack:
 FrontEnd: HTML, CSS, Javascript  
