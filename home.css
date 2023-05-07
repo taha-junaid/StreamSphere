@@ -1,0 +1,148 @@
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.title-bar {
+    box-sizing: border-box;
+    background-color: white;
+    color: #bb54f9;
+    padding: 10px;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: grey 2px 2px 5px;
+    display: flex;
+    cursor: pointer;
+}
+
+.title-bar h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+form {
+    display: flex;
+    margin-left: auto;
+}
+
+input[type="text"] {
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 5px 5px 0;
+}
+
+button {
+    background-color: #9370DB;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    margin: 5px 5px 5px 0;
+}
+
+button:hover {
+    background-color: #7B68EE;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+    overflow-y: auto;
+    padding-top: 80px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin: 0;
+}
+
+.card img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.card button {
+    background-color: #9370DB;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-left: auto;
+}
+
+.card button:hover {
+    background-color: #7B68EE;
+}
+
+.recently-watched {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #9370DB;
+    color: #fff;
+}
+
+.recently-watched h2 {
+    margin-top: 0;
+}
+
+.recently-watched ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recently-watched li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.recently-watched li span {
+    font-weight: bold;
+}

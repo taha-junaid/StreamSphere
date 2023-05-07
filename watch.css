@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.title-bar {
+    box-sizing: border-box;
+    background-color: white;
+    color: #bb54f9;
+    padding: 0 15px 0 15px;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: grey 2px 2px 5px;
+    display: flex;
+    cursor: pointer;
+}
+
+.title-bar h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user {
+    margin-left: auto;
+    color: black;
+}
+
+.participants {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.participants h2 {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #9370DB;
+    color: white;
+    padding: 10px 0 10px 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.main {
+    padding-top: 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 90vh;
+}
+
+.item {
+    border: 1px solid black;
+}
+
+.item:nth-child(1),
+.item:nth-child(2) {
+    grid-row-end: span 2;
+}
+
+.item:nth-child(1) {
+    grid-column: span 3;
+}
+
+.item:nth-child(3),
+.item:nth-child(4) {
+    grid-column: span 2;
+}
+
+.tabcontainer {
+    height: 85%;
+}
+
+.tabnav {
+    display: flex;
+    width: 100%;
+}
+
+.tab {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #ccc;
+    border: 1px solid black;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #9370DB;
+    color: white;
+}
+
+.tabcontent {
+    display: none;
+    padding: 10px;
+    border-top: none;
+    height: 100%;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+#myVideo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+button {
+    background-color: #9370DB;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-right: 20px;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+button:hover {
+    background-color: #7B68EE;
+}
+
+.invite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+}

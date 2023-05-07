@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" type="text/css" href="watch.css">
+
+</head>
+
+<body>
+    <div class="title-bar">
+        <img src="assets/logo.png" width="60px" height="50px" style="margin-top: 8px;">
+        <h1>StreamSphere</h1>
+    </div>
+    <div class="main">
+        <div class="item">
+            <video id="myVideo" controls controlsList="nodownload">
+                <source src="https://d2s1ugs0wx5860.cloudfront.net/uncharted-trailer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="item">
+            <nav class="tabnav">
+                <div class="tab active" data-target="chat">Chat</div>
+                <div class="tab" data-target="video">Video</div>
+            </nav>
+            <article class="tabcontainer">
+                <div id="chat" class="tabcontent active">Chat content goes here</div>
+                <div id="video" class="tabcontent">Video content goes here</div>
+            </article>
+        </div>
+        <div class="item participants">
+            <h2>Participants</h2>
+            <p><b>You</b></p>
+        </div>
+        <div class="item invite">Invite Others: </div>
+    </div>
+</body>
+<script>
+
+    const logo = document.getElementsByClassName('title-bar')[0];
+        logo.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tab.classList.add('active');
+            const tabcontents = document.querySelectorAll('.tabcontent');
+            tabcontents.forEach(tabcontent => tabcontent.classList.remove('active'));
+            const target = tab.getAttribute('data-target');
+            document.querySelector(`#${target}`).classList.add('active');
+        });
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const channelId = urlParams.get('c');
+    const userId = urlParams.get('userId');
+    const inviteDiv = document.querySelector('.invite');
+    const participantsDiv = document.querySelector('.participants');
+
+    document.querySelector(".title-bar").innerHTML += `<h2 class="user">Hi ${userId}!</h2>`;
+    document.addEventListener('DOMContentLoaded', () => {
+        var stompClient = null;
+        var socket = new SockJS(`http://127.0.0.1:8090/app`);
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            const video = document.getElementById('myVideo');
+            setInterval(() => {
+                const message = { 'syncEventType': "TIME_SYNC",'currentTime': new Date().getTime(), 'videoTimeStamp': video.currentTime, 'paused': video.paused };
+                stompClient.send(`/${channelId}`, {}, JSON.stringify(message));
+                // console.log("sent message");
+            }, 3000);
+            stompClient.subscribe(`/channel/${channelId}`, function (syncEvent) {
+                var syncEventType = JSON.parse(syncEvent.body).syncEventType
+                if(syncEventType=="PARTICIPANT_JOINED"){
+                    var newparticipant = JSON.parse(syncEvent.body)
+                    participantsDiv.innerHTML += `<p>${newparticipant.userId}<p>`;
+                } else if(syncEventType=="PARTICIPANT_LEFT"){
+                    var newparticipant = JSON.parse(syncEvent.body)
+                    const participantsDiv = document.querySelector('.participants'); 
+                    const participants = participantsDiv.querySelectorAll('p'); 
+                    const searchText = newparticipant.userId;
+                    participants.forEach((p) => { 
+                        if (p.textContent === searchText) { 
+                            participantsDiv.removeChild(p); 
+                        }
+                    });
+                }
+            });
+        });
+        
+        // function copyToClipboard() {
+        //     const input = document.getElementById('channel-url');
+        //     input.select();
+        //     input.setSelectionRange(0, 99999);
+        //     document.execCommand("copy");
+        //     alert('Channel URL copied to clipboard!');
+        // }
+
+        inviteDiv.innerHTML += `Share this channelId <p id="channel-url">${channelId}</p>`;//</p><button onclick="copyToClipboard()">Copy ChannelId</button>
+    });
+</script>
+
+</html>

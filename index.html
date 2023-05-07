@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="shortcut icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+
+<body>
+    <div class="title-bar">
+        <img src="assets/logo.png" width="60px" height="50px">
+        <h1>StreamSphere</h1>
+        <form action="/participant.php" method="post">
+            <input name="useridinput" class="useridinput" type="text" placeholder="Enter Username" required>
+            <input name="channelid" class="joinchannelinput" type="text" placeholder="Enter Channel Id" required>
+            <button class="joinchannelbutton" type="submit">Join Channel</button>
+      </form>
+    </div>
+    <div class="card-container">
+        <div class="card">
+            <div>
+                <h2>Uncharted</h2>
+                <img src="assets/uncharted.jpeg" alt="Uncharted Poster">
+            </div>
+            <button onclick="handleClick(this)">Watch Together</button>
+        </div>
+        <div class="card">
+            <div>
+                <h2>Tenet</h2>
+                <img src="assets/tenet.jpeg" alt="Tenet Poster">
+            </div>
+            <button onclick="handleClick(this)">Watch Together</button>
+        </div>
+        <div class="card">
+            <div>
+                <h2>Batman</h2>
+                <img src="assets/batman.webp" alt="Batman Poster">
+            </div>
+            <button onclick="handleClick(this)">Watch Together</button>
+        </div>
+    </div>
+    <div class="recently-watched">
+        <h2>Recently Watched</h2>
+        <ul>
+            <li><span>Movie Title 1</span></li>
+            <li><span>Movie Title 2</span></li>
+            <li><span>Movie Title 3</span></li>
+        </ul>
+    </div>
+    <script>
+        function handleClick(button) {
+            const userId = document.getElementsByClassName("useridinput")[0].value;
+            if(userId!=""){
+            const parent = button.parentNode;
+            const movie = parent.querySelector('div').querySelector('h2').textContent;
+            fetch(`http://127.0.0.1:8090/createchannel/${userId}/${movie}`)
+                .then(response => response.json()) 
+                .then(data => {
+                    const channelId = data.channelId;
+                    // var channelId="as32uys98a"
+                    redirectToPage(`watch.html?userId=${userId}&c=${encodeURIComponent(channelId)}`);
+                })
+                .catch(error => console.error(error));
+            } else {
+                alert("Please enter a username");
+            }
+        }
+
+        function redirectToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>
