@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SyncEvent {
-    private syncEventType syncEventType; //TIME_SYNC or PARTICIPANT_SYNC
+    private syncEventType syncEventType; //TIME_SYNC , PARTICIPANT_JOINED, PARTICIPANT_LEFT, VC_PARTICIPANT_JOINED, VC_PARTICIPANT_LEFT
     private String userId="";
     private String currentTime;
     private String videoTimeStamp="";

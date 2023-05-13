@@ -6,7 +6,6 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.util.HtmlUtils;
 
 @Controller
 public class SyncController {
@@ -20,6 +19,8 @@ public class SyncController {
             return new SyncEvent(syncEventType,payload.getCurrentTime(),payload.getVideoTimeStamp(),payload.getPaused());
         } else if (syncEventType == syncEventType.PARTICIPANT_JOINED || syncEventType == syncEventType.PARTICIPANT_LEFT){
             return new SyncEvent(syncEventType,payload.getUserId(),payload.getCurrentTime());
+        } else if (syncEventType == syncEventType.VC_PARTICIPANT_JOINED || syncEventType == syncEventType.VC_PARTICIPANT_LEFT) {
+            return new SyncEvent(syncEventType, payload.getUserId(), payload.getCurrentTime());
         } else
             throw new RuntimeException("Unknown syncEventType");
     }

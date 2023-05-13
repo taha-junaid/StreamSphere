@@ -47,4 +47,27 @@ public class userEventsRepository {
         return joinedUsers;
     }
 
+    public List<String> getRecentMoviesForUser(String userId) {
+        Map<String, AttributeValue> eav = new HashMap<>();
+        eav.put(":val1", new AttributeValue().withS(userId));
+
+        DynamoDBQueryExpression<UserEventsModel> queryExpression = new DynamoDBQueryExpression<UserEventsModel>()
+                .withKeyConditionExpression("userId = :val1")
+                .withExpressionAttributeValues(eav)
+                .withIndexName("userId-eventTime-index")
+                .withScanIndexForward(false)  // sort by descending order of eventTime
+                .withConsistentRead(false)
+                .withLimit(5);  // limit to top 5
+
+        List<UserEventsModel> userEvents = dynamoDBMapper.query(UserEventsModel.class, queryExpression);
+
+        List<String> recentMovies = userEvents.stream()
+                .filter(u -> u.getEventType().equals("CREATED") || u.getEventType().equals("JOINED"))
+                .map(UserEventsModel::getMovieId)
+                .distinct() // get unique movies
+                .collect(Collectors.toList());
+
+        return recentMovies;
+    }
+
 }

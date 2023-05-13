@@ -1,147 +1,253 @@
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 1;
+  display: block;
+  z-index: 999;
+}
+
+
 .title-bar {
-    box-sizing: border-box;
-    background-color: white;
-    color: #bb54f9;
-    padding: 0 15px 0 15px;
-    text-align: left;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-shadow: grey 2px 2px 5px;
-    display: flex;
-    cursor: pointer;
+  box-sizing: border-box;
+  background-color: white;
+  color: #bb54f9;
+  padding: 0 15px 0 15px;
+  text-align: left;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: grey 2px 2px 5px;
+  display: flex;
+  cursor: pointer;
 }
 
 .title-bar h1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user {
-    margin-left: auto;
-    color: black;
+  margin-left: auto;
+  color: black;
 }
 
 .participants {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .participants h2 {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: #9370DB;
-    color: white;
-    padding: 10px 0 10px 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #9370DB;
+  color: white;
+  padding: 10px 0 10px 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 .main {
-    padding-top: 72px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    height: 90vh;
+  padding-top: 72px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 90vh;
 }
 
 .item {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .item:nth-child(1),
 .item:nth-child(2) {
-    grid-row-end: span 2;
+  grid-row-end: span 2;
 }
 
 .item:nth-child(1) {
-    grid-column: span 3;
+  grid-column: span 3;
 }
 
 .item:nth-child(3),
 .item:nth-child(4) {
-    grid-column: span 2;
+  grid-column: span 2;
 }
 
 .tabcontainer {
-    height: 85%;
+  height: 88%;
 }
 
 .tabnav {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .tab {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #ccc;
-    border: 1px solid black;
-    border-bottom: none;
-    cursor: pointer;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: #ccc;
+  border: 1px solid black;
+  border-bottom: none;
+  cursor: pointer;
 }
 
 .tab.active {
-    background-color: #9370DB;
-    color: white;
+  background-color: #9370DB;
+  color: white;
 }
 
 .tabcontent {
-    display: none;
-    padding: 10px;
-    border-top: none;
-    height: 100%;
+  display: none;
+  padding: 10px;
+  border-top: none;
+  height: 97%;
 }
 
 .tabcontent.active {
-    display: block;
+  display: block;
 }
 
 #myVideo {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 button {
-    background-color: #9370DB;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-    margin-right: 20px;
-    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  background-color: #9370DB;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  margin-right: 20px;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
 }
 
 button:hover {
-    background-color: #7B68EE;
+  background-color: #7B68EE;
 }
 
 .invite {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.5rem;
+}
+
+#chat-messages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#chat-form input[type="text"] {
+  flex: 1;
+}
+
+#chat-form button[type="submit"] {
+  margin-left: 10px;
+}
+
+#chat {
+  position: relative;
+}
+
+.chat-messages-container {
+  overflow: scroll;
+  height: 88%;
+}
+
+#chat-form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin-top: auto;
+}
+
+#chat-form.bottom {
+  margin-top: 0;
+}
+
+#message-input {
+  margin-left: 15px;
+}
+
+#chat-messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-container {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.message-bubble {
+  padding: 10px;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.received-message {
+  text-align: left;
+  margin-right: auto;
+  background-color: #9370DB;
+  color: white;
+  border-radius: 10px 10px 10px 0px;
+}
+
+.sent-message {
+  float: right;
+  margin-left: auto;
+  background-color: #00CC99;
+  border-radius: 10px 0px 10px 10px;
+}
+
+#video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-auto-rows: 150px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#video {
+  width: 100%;
+  height: 95%;
+  object-fit: cover;
+  overflow: scroll;
+}
+
+.vcvideo {
+  width: 260px;
+  height: 155px;
+  object-fit: fill;
+  margin: 5px;
 }
