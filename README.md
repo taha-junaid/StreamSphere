@@ -18,16 +18,15 @@ A video streaming platform that allows multiple users to watch a movie together.
 - Partcipants can join an existing live channel.
 
 ### Home Page:
-<img width="1440" alt="image" src="https://github.com/taha-junaid/StreamSphere/assets/113802375/f2d4bb11-2dd5-4d38-8094-bc4555392635">
+![image](https://github.com/taha-junaid/StreamSphere/assets/113802375/3c861dae-aa8c-4985-8134-ada56eb6752d)
 
 ### Host Watch Page
-<img width="1440" alt="image" src="https://github.com/taha-junaid/StreamSphere/assets/113802375/3b7e7758-7b81-4062-8480-15d3ca6eff10">
-<img width="1440" alt="image" src="https://github.com/taha-junaid/StreamSphere/assets/113802375/e9697b9d-8ff7-4ecf-9639-033df4f7050c">
+![image](https://github.com/taha-junaid/StreamSphere/assets/113802375/9b7cc9ae-8199-4e24-81ed-60f902a4b6e3)
+![image](https://github.com/taha-junaid/StreamSphere/assets/113802375/53f48f1c-17c6-452d-8886-d811aaceece0)
 
 ### Participant Watch Page
-<img width="1440" alt="image" src="https://github.com/taha-junaid/StreamSphere/assets/113802375/da96cc48-fabd-43a7-a5ec-59a802cf1de4">
-<img width="1440" alt="image" src="https://github.com/taha-junaid/StreamSphere/assets/113802375/59e2c732-192a-4f8a-827f-562adafe055e">
-
+![image](https://github.com/taha-junaid/StreamSphere/assets/113802375/73786f98-f088-4ae4-94d8-2f94849ada03)
+![image](https://github.com/taha-junaid/StreamSphere/assets/113802375/b697ae8a-5197-4649-93a0-6cd48ce04324)
 
 
 
